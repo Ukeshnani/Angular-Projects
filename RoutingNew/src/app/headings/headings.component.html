@@ -1,0 +1,27 @@
+<main class="container mt-4">
+    <h1 class="mb-4">Routing Application</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">🏍️ BikeZone</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login" routerLinkActive="active">LogIn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/Home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/About" routerLinkActive="active">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/Items" routerLinkActive="active">Item List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login" [queryParams]="{LogOut: true}"   routerLinkActive="active">LogOut</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</main>

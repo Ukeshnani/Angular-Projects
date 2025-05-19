@@ -1,0 +1,170 @@
+<p>reactive-forms works!</p>
+<h2>{{formstatus}}</h2>
+
+<section>
+  <form
+    [formGroup]="reactiveForm"
+    (ngSubmit)="onFormSubmit()"
+    class="d-flex flex-column gap-4 justify-content-center"
+  >
+    <div class="d-flex gap-3 row w-25">
+      <div >
+        <input
+          type="text"
+          placeholder="enter your First name"
+          formControlName="firstname"
+          class="form-control w-100 border border-dark"
+        />
+        <small
+          class="text-danger fw-bold mt-2"
+          *ngIf="
+            reactiveForm.get('firstname')?.touched &&
+            reactiveForm.get('firstname')?.errors?.['required']"
+        >
+          *first name is required</small
+        >
+        <small class="text-danger fw-bold mt-2"
+        *ngIf="reactiveForm.get('firstname')?.errors?.['noSpaceAllowed'] && 
+        reactiveForm.get('firstname')?.touched"  >
+        *no space allowed
+
+        </small>
+      </div>
+      <div >
+        <input
+          type="text"
+          placeholder="enter your Last name"
+          formControlName="lastname"
+          class="form-control border border-dark"
+        />
+        <small
+          class="text-danger fw-bold"
+          *ngIf="
+            reactiveForm.get('lastname')?.touched &&
+            reactiveForm.get('lastname')?.invalid"
+        >
+          *last name is required</small
+        >
+      </div>
+    </div>
+
+    <div >
+      <input
+        type="text"
+        placeholder="enter your mail id"
+        formControlName="email"
+        class="form-control w-25 border border-dark"
+      />
+      <small
+        class="text-danger fw-bold"
+        *ngIf="
+          reactiveForm.get('email')?.touched &&
+          reactiveForm.get('email')?.invalid"
+      >
+        *email address is required</small
+      >
+    </div>
+    <div class="d-flex gap-2">
+      <input
+        type="text"
+        class="form-control w-25 border border-dark"
+        placeholder="enter your username"
+        formControlName="username"
+      />
+      <button (click)="onCheckUserName()" class="btn btn-outline-primary" type="button"
+      [disabled]="!(reactiveForm.get('firstname')?.value && reactiveForm.get('lastname')?.value)">Check</button>
+    </div>
+    <label class="form-label mt-2">Gender</label>
+    <div class="d-flex gap-3">
+      <div *ngFor="let gen of genders" class="form-check form-check-inline">
+        <input
+        class="form-check-input border border-dark"
+          type="radio"
+          [value]="gen.gender"
+          formControlName="gender"
+        />
+        <label class="form-check-label">
+          {{ gen.display }}
+        </label>
+      </div>
+    </div>
+
+    <!-- SKILLS SECTION  --------------------------------------- -->
+    <div formArrayName="skills">
+      <h3 class="mb-2">Add skills</h3>
+      <div *ngFor="let control of skillsControls; let i = index" class="d-flex align-items-center gap-3 mb-2">
+        <h5 class="fw-semibold mt-2">skill {{i+1}}</h5>
+        <input
+        type="text"
+        [formControlName]="i"
+        placeholder="enter your skill"
+        class="form-control w-25 border border-dark"
+        >
+        <button type="button" (click)="removeSkill(i)" class="btn btn-danger btn-sm">Remove</button>
+      </div>
+      <div class="d-flex gap-3 mt-3">
+        <button type="button" (click)="addSkills()" class="btn btn-primary">Add</button>
+      </div> 
+    </div>
+    <!-- EXPERINCE SECTION ------------------------------------------>
+    <div formArrayName="experience" class="mt-2">
+      
+      <div *ngFor="let exp of expControls;let i = index " [formGroupName]="i"
+      class="row g-3 align-items-center mb-3 w-50">
+      <h5 class="mb-2">Experince {{i+1}}</h5>
+      <span><strong>Previous Company: </strong> 
+         <input
+          type="text"
+          class="form-control w-25 mt-2 border border-dark"
+          formControlName="companyName"
+          placeholder="enter your past organization"
+          >
+      </span>
+       <span><strong>Start Date: </strong> 
+        <input type="date" placeholder="start date" formControlName="start"  class="form-control w-25 mt-2 border border-dark"> </span>
+         <span><strong>End Date: </strong>
+          <input type="date" placeholder="end date" formControlName="end"  class="form-control w-25 mt-2 border border-dark"></span>
+          <div>
+            <button type="button" (click)="deleteExp(i)" class="btn btn-outline-danger">delete experience</button>
+          </div>
+      </div>
+      <div>
+        <button type="button" (click)="addExp()" class="btn btn-primary" >Add experince</button>
+      </div>
+
+    </div>
+    <div>
+      <button type="submit"  class="btn btn-success" [disabled]="reactiveForm.invalid">submit</button>
+      
+    </div>
+  </form>
+</section>
+
+ 
+<div class="card" *ngIf="ishow" >
+  <div class="card-header">
+    User Details👤
+  </div>
+  <div class="card-body" >
+    <h5 class="card-title">Your form was submitted✅</h5>
+    <h4>fullname: {{formData.firstname}} {{formData.lastname}}</h4>
+    <h4>Email address: {{formData.email}}</h4>
+    <h4>Username: {{formData.username}}</h4>
+    <h4>gender: {{formData.gender}}</h4>
+    <h4>Skills:</h4>
+    <div *ngFor="let ski of formData.skills">
+      <h4> {{ski}}</h4>
+    </div>
+    <hr>
+    <div *ngFor="let expp of formData.experience;let i = index">
+      <h4>Experince: {{i+1}}</h4>
+      <h4>company name: {{expp.companyName}}</h4>
+      <h4>start date: {{expp.start}}</h4>
+      <h4>end date: {{expp.end}}</h4>
+      <hr>
+    </div>
+    
+    <p class="card-text">Thank you for submitting your details!!</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>

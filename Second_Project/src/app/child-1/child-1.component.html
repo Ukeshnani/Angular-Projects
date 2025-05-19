@@ -1,0 +1,25 @@
+<p>child-1 works!</p>
+<div>
+    <span>
+        <input type="text" #name placeholder="Enter your name" />
+        <button (click)="onclicked(name.value)">add</button>
+
+    </span>
+    <input type="text" #searched  placeholder="Enter " (input)="searchedval()" />
+   
+    <ul  *ngFor="let item of listOfstrings; let i = index">
+        <li >{{i}}. {{ item }}</li>
+        
+    </ul>
+
+
+    <input type="text" #uk>
+    <h1>{{userName | uppercase}}</h1>
+    <h1>{{todayDate | date:'fullDate'}}</h1>
+    <button (click)="onEvent(uk.value)">new add</button>
+    
+   
+
+
+
+</div>

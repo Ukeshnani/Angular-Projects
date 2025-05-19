@@ -1,0 +1,8 @@
+<div *ngIf="selectedBike">
+    <h1>Edit {{ selectedBike.name }}</h1>
+
+    <button  class="btn btn-sm btn-outline-primary" [routerLink]="'/Items/'+(selectedBike.id-1)" >Previous</button>
+    <button  class="btn btn-sm btn-outline-primary" [routerLink]="'/Items/'+(selectedBike.id+1)" >Next</button>
+
+  </div>
+  

@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <div class="container mt-5 text-center">
+    <h1 class="display-4 fw-bold text-primary">
+      <i class="bi bi-bicycle me-2"></i>Bike Catalog
+    </h1>
+  <hr />
+
+<div class="container mt-4">
+
+  <div class="alert alert-info" role="alert">
+    Welcome to the <strong>Bike Catalog</strong>! This page allows you to search for your favorite bikes by name. Use the search box below to find details such as brand, type, and price.
+  </div>
+<div class="container mt-4">
+    <div class="input-group mb-3">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Search Bike" 
+        #searchvar 
+      />
+      <button 
+        class="btn btn-primary ml-2" 
+        type="button" 
+        (click)="onSearch(searchvar.value)"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+</div>
+  

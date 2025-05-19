@@ -1,0 +1,45 @@
+
+
+<style>
+ 
+</style>
+
+<main class="main">
+  <div class="content">
+    <h1 class="bg-info text-danger p-5 mt-3 shadow-lg">Welcome to {{ title }}!</h1>
+    <h2 class="bg-black text-white">{{name}}</h2>
+  </div>
+  <span>Search:  <input type="text" placeholder="enter ur name" [(ngModel)]="myName"></span>
+  <h2>{{myName}}</h2>
+    <div>
+    <h2>user name is {{userName()}}</h2>
+    <button (click)="good()">Change Message</button>
+  </div>
+  <div>
+    <app-demo *ngIf="!toDestroy"
+    [message]="message1" [age]="personAge" [name]="userName()" (volumeChanged)="onVolumeChanged($event)" (childMessage)="parentEmittt($event)" >
+
+    </app-demo>
+    <button (click)="toDestroyC()">Destroy App-Demo</button>
+
+    <h1>{{num()}}</h1>
+
+    <h2>{{msg}}</h2>
+    
+  </div>
+
+  <div>
+    <app-directives></app-directives>
+    <span>
+      <input type="text" #inputE1>
+      <button (click)="onClickEvent(inputE1)" >submit</button>
+    </span>
+    <app-life-cycle-hooks [message1]="inputVal" ></app-life-cycle-hooks>
+    <app-rxjs></app-rxjs>
+
+  </div>
+</main>
+
+
+
+<router-outlet />

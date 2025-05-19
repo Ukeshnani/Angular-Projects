@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h3 class="mb-3">Bikes List</h3>
+  <ul class="list-group">
+    <li *ngFor="let bike of bikes" class="list-group-item d-flex justify-content-between align-items-center">
+      <span>
+        <strong>{{ bike.id }}:</strong> {{ bike.name }}
+      </span>
+      
+      <div class="dropdown">
+        <button
+          class="btn btn-light btn-sm"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          &#8942; 
+        </button>
+      
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" [routerLink]="[bike.id]">Edit</a>
+          </li>
+          
+          <li>
+            <a class="dropdown-item" [routerLink]="['/checkout']" [state]="bike">View</a>
+          </li>
+        </ul>
+      </div>
+      
+    </li>
+  </ul>
+</div>
+
+

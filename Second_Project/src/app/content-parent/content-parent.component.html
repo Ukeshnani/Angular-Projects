@@ -1,0 +1,44 @@
+<p>content-parent works!</p>
+
+<div class="row">
+  <div class="col-md-6">
+    <app-content-child [products]="productsOne">
+        <h1 class="header"  #head>clearence Products</h1>
+    <a href="" class="footer" #head >view more</a>
+    </app-content-child>
+    
+  </div>
+  <div class="col-md-6">
+    <app-content-child [products]="productsTwo">
+        <h1 class="header"  #head>exclusive  Products</h1>
+    <a href="" class="footer"  #head>get items</a>
+    </app-content-child>
+    
+  </div>
+</div>
+<h1>Learn NG template</h1>
+<ng-template #hidden>
+    <p>this content is hidden due to ng template</p>
+    <p>this is the content in ng temmplate </p>
+</ng-template>
+
+<div *ngTemplateOutlet="hidden"></div>
+
+<!-- this custom pipe is used to convert the value into percentage -->
+
+<div *ngFor="let item of productsOne | filter">
+  <p>{{item.name }}</p>
+</div>
+
+  <h3>Your Marks:  <input type="number" [(ngModel)]="curVal" placeholder="Enter current value" (input)="isshow=false" /></h3>
+  <h3>Total Marks:  <input type="number" [(ngModel)]="totalVal" placeholder="Enter total value" (input)="isshow=false" /></h3>
+  <button (click)="showPerc()">Show Percentage</button>
+ 
+
+<h1 *ngIf="isshow" class="text-danger">Your Marks Percentage: {{curVal | percentage: totalVal:2}} </h1>  
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+<p>child2 works!</p>
+<h1>{{momo}}</h1>
+<app-child-1  [name]="userName"  (sendData)="datasent($event)" ></app-child-1>
+
+<input type="text" #inputel placeholder="Enter your first name" /><br>
+<input type="text" #inputel placeholder="Enter your middle name" /><br>
+<input type="text" #inputel placeholder="Enter your last name" /><br>
+<button (click)="getFullname()">full name</button>
+<h1>{{fullName}}</h1>

@@ -1,0 +1,9 @@
+<h1>Grocery List</h1>
+<ul>
+    <li *ngFor="let grocery of groceryToSignal() ">
+        {{grocery.id}}-{{grocery.name}}
+        <a [routerLink]="'details/'+ grocery.id" >Edit</a>
+
+    </li>
+</ul>
+<router-outlet />

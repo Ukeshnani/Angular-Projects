@@ -1,0 +1,14 @@
+<p>content-child works!</p>
+
+
+
+<ng-content select=".header"></ng-content>
+<ul class="list-group" *ngFor="let prod of products" >
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{prod.name }}
+      <span class="badge text-bg-primary rounded-pill">{{prod.price | currency:'INR'}}</span>
+    </li>
+</ul>
+<ng-content select=".footer"></ng-content>
+
+

@@ -1,0 +1,16 @@
+<div class="d-flex bg-info align-items-center px-3 py-3 gap-3 justify-content-center">
+<a routerLink="second" class="fw-bold text-dark ">second</a>
+<a routerLink="first" class="fw-bold text-dark ">First</a>
+<a routerLink="login" class="fw-bold text-dark">Log In</a>
+
+</div>
+<div *ngIf="!isLoggedIn(); else loggedInBlock">
+      <button (click)="login()">Login with Microsoft</button>
+    </div>
+
+    <ng-template #loggedInBlock>
+      <h2>Welcome {{ getUsername() }}</h2>
+      <button (click)="logout()">Logout</button>
+    </ng-template>
+<router-outlet></router-outlet>
+

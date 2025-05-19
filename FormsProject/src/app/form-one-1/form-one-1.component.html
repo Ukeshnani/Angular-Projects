@@ -1,0 +1,80 @@
+<p class="text-success text-center fw-bold mt-3">form-one-1 works!</p>
+
+
+<!-- [ngClass]="{'ok':regform.touched}" -->
+<section  class="container bg-light py-3 pe-3 rounded shadow-sm mt-4" > 
+    <h2 class="text-start mb-4">Form One</h2>
+    <form  (ngSubmit)="onSubmit()" #regform="ngForm" >
+        <div class="mb-3">
+            <label class="form-label">Name:</label>
+            <input class="form-control w-25"  [ngClass]="{'nvalid':fname.invalid &&  fname.touched}"
+                   type="text" placeholder="enter your name" name="name" ngModel required  #fname="ngModel" />
+            <div class="mt-2" >
+                <small *ngIf="fname.invalid &&  fname.touched" class="text-danger fw-bold ">*Name is required</small>
+                <span class="ms-2" *ngIf="fullName">your name: {{fullName}}</span>
+            </div>
+        </div>
+        <div>
+            <label class="form-label">Email:</label>
+            <input class="form-control w-25" type="email" placeholder="enter  your email"  name="email" 
+                   ngModel  required email #remail = ngModel/>
+            <div class="mt-2 ms-2">
+                <small *ngIf="remail.invalid &&  remail.touched" class="text-danger fw-bold ">*email is required</small>
+                <span *ngIf="useremail" >your email: {{useremail}}</span>
+            </div>
+        </div>
+        <div>
+            <label class="form-label mt-2">Username:</label>
+            <div class="d-flex gap-4" >
+                <input class="form-control w-25 mt-4" type="text" placeholder="create your username"  name="username" 
+                ngModel  required  #userName = ngModel/>
+         <button type="button" class="btn btn-primary mt-4" [disabled]="fname.invalid || remail.invalid" (click)="generateUsername()" >Create username</button>
+
+            </div>
+          
+            <div >
+                <small *ngIf="userName.invalid &&  userName.touched" class="text-danger fw-bold ">*username is required</small>
+            
+            </div>
+        </div>
+        <label class="form-label mt-3">Gender</label>
+        <div class="d-flex gap-3" >
+            <div *ngFor="let gen of genders" >
+           
+                <input class="form-check-input" type="radio" name="gender"   [value]="gen.gender" ngModel> 
+                <label class="form-check-label ms-2">
+                 {{ gen.display }}
+               </label>
+              
+             </div>
+
+
+        </div>
+        <hr>
+        <div>
+            <input type="checkbox" name="aggrement" [ngModel]="isAggreed" #aggree="ngModel">
+            <label>I agree to terms & conditions</label>
+        </div>
+       
+        <!-- <input type="submit" value="Submit" /> -->
+        <button class="btn btn-primary mt-4" type="submit" [disabled]="!regform.valid || !aggree.value " >submit</button>
+    </form>
+
+</section>
+
+
+<div class="card" *ngIf="iscard" >
+    <div class="card-header">
+      User Details👤
+    </div>
+    <div class="card-body" >
+      <h5 class="card-title">Your form was submitted✅</h5>
+      <h4>FullName: {{fullName}}</h4>
+      <h4>Email address: {{useremail}}</h4>
+      <h4>Username: {{UserName}}</h4>
+      <h4>gender: {{gender}}</h4>
+      <p class="card-text">Thank you for submitting your details!!</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+ 

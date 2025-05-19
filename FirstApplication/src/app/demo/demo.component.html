@@ -1,0 +1,23 @@
+<p>demo works!</p>
+<h1>message from parent: {{ message }}</h1>
+<p>person age: {{ age }}</p>
+<h1>{{ name }}</h1>
+<h3 >Price: {{ price() }}</h3>
+<h3>Quantity: {{ quantity() }}</h3>
+<h2>total price: {{ total() }}</h2>
+<h2>{{fullName()}}</h2>
+<div class="flex-column justify-content-evenly bg-light p-1 " >
+  <button (click)="increamnet()">🛒 Add</button>
+  <button (click)="decrement()"  class="m-lg-2" >remove</button>
+  <button (click)="count()">butt</button>
+  <button (click)="sendMessage()" >message from child</button>
+</div>
+<div>
+    <p>
+        Enter message: <input type="text" #msg1/> 
+        <button (click)="sendMsg(msg1)" >Send</button>
+   </p>
+
+ 
+</div>
+

@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="row" *ngIf="dragons?.items">
+      <div class="col-md-4 mb-4" *ngFor="let drag of dragons.items">
+        <div class="card h-100 shadow-sm border-0">
+          <img [src]="drag.image" class="card-img-top" [alt]="drag.name" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ drag.name }}</h5>
+            <p class="card-text" style="height: 100px; overflow: auto;">{{ drag.description }}</p>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <span class="badge" 
+                  [ngClass]="drag.isDestroyed ? 'bg-danger' : 'bg-success'">
+              {{ drag.isDestroyed ? 'Destroyed' : 'Active' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

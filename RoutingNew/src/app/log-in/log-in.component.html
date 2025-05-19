@@ -1,0 +1,17 @@
+<div class="mt-5">
+    <h1 class="d-flex  justify-content-center">Please LogIn Here</h1>
+    <div class="container mt-4 d-flex flex-column align-items-center justify-content-center">
+        <label for="username">Username: <input type="text" id="username" placeholder="Enter your username" required [(ngModel)]="username" ></label>
+        <br>
+
+        <label for="password">Password: <input type="password" id="password" placeholder="Enter your password" required [(ngModel)]="password"></label>
+        <br>
+
+        <button type="submit" class="btn btn-primary" (click)="onLogIn()" >Log In</button><br>
+
+        <label>
+            <input type="checkbox" id="rememberMe"> Remember Me
+        </label>
+
+    </div>
+</div>

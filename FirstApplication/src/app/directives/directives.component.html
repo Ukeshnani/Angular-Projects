@@ -1,0 +1,29 @@
+
+<h1>
+    {{notmsg}}
+</h1>
+
+<div class="container mt-5">
+    <div class="card shadow rounded">
+      <div class="card-header bg-primary text-white">
+        <h4>User Details</h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let item of userData | keyvalue ">
+          <strong class="text-capitalize">{{ item.key }} </strong>: {{ item.value }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <button (click)="visibleMe()" >click me</button>
+<div *ngIf="isloggedin">
+    <h1>i am here </h1>
+</div>
+<h1>
+    {{res}}
+    ----------
+    {{sb}}
+</h1>

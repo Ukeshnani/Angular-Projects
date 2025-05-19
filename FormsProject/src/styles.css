@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+.ok{
+    box-shadow: 5px 5px 5px 5px #888888;
+    background-color: #f0f0f0;
+}
+
+.nvalid{
+    border-color: red 2px solid;
+}
