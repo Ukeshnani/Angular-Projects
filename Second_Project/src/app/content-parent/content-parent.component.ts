@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { PercentagePipe } from '../Pipes/percentage.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../Pipes/Filter.pipe';
+import { customD } from '../Directives/c1.directive';
 
 @Component({
   selector: 'app-content-parent',
-  imports: [ContentChildComponent,CommonModule,PercentagePipe,FormsModule,FilterPipe],
+  imports: [ContentChildComponent,CommonModule,PercentagePipe,FormsModule,FilterPipe,customD],
   templateUrl: './content-parent.component.html',
   styleUrl: './content-parent.component.css'
 })

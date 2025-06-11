@@ -16,7 +16,7 @@
     
   </div>
 </div>
-<h1>Learn NG template</h1>
+<h1 custom >Learn NG template</h1>
 <ng-template #hidden>
     <p>this content is hidden due to ng template</p>
     <p>this is the content in ng temmplate </p>
@@ -27,7 +27,7 @@
 <!-- this custom pipe is used to convert the value into percentage -->
 
 <div *ngFor="let item of productsOne | filter">
-  <p>{{item.name }}</p>
+  <p>{{item.name | uppercase }}</p>
 </div>
 
   <h3>Your Marks:  <input type="number" [(ngModel)]="curVal" placeholder="Enter current value" (input)="isshow=false" /></h3>
