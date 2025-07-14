@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <div class="d-flex gap-3 align-items-center">
+    <button
+      class="btn btn-outline-info text-dark fw-semibold mb-3"
+      (click)="allUsers()"
+    >
+      User List
+    </button>
+    <button
+      class="btn btn-outline-info text-dark fw-semibold mb-3"
+      (click)="activeUsers()"
+    >
+      Active Users
+    </button>
+    <button
+      class="btn btn-outline-info text-dark fw-semibold mb-3"
+      (click)="verifiedUsers()"
+    >
+      Verified Users
+    </button>
+    <button
+      class="btn btn-outline-info text-dark fw-semibold mb-3"
+      (click)="takeUsers()"
+    >
+      take Users
+    </button>
+    <button
+      class="btn btn-outline-info text-dark fw-semibold mb-3"
+      (click)="takeUntilMethod()"
+    >
+      takeUntil Users
+    </button>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Role</th>
+        <th>Active</th>
+        <th>Verified</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Created At</th>
+        <th>Last Login</th>
+        <th>Avatar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(user of userList; track $index) {
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span class="badge text-bg-success" *ngIf="user.isActive">Yes</span>
+          <span class="badge text-bg-danger" *ngIf="!user.isActive">No</span>
+        </td>
+        <td>
+          <span class="badge text-bg-success" *ngIf="user.isVerified">Yes</span>
+          <span class="badge text-bg-danger" *ngIf="!user.isVerified">No</span>
+        </td>
+        <td>{{ user.phone }}</td>
+        <td>
+          {{ user.address.street }},<br />
+          {{ user.address.city }}, {{ user.address.zip }}
+        </td>
+        <td>{{ user.createdAt | date : "medium" }}</td>
+        <td>{{ user.lastLogin | date : "medium" }}</td>
+        <td>
+          <img
+            [src]="user.avatar"
+            alt="Avatar"
+            class="img-thumbnail"
+            style="width: 50px; height: 50px"
+          />
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
